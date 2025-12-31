@@ -24,12 +24,6 @@ body {
     min-width: 3vw !important; 
 }
 
-.dropdown-menu.dropdown-menu-center {
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
-}
-
 .flex-nowrap {
     margin-right: 15% !important;
 }

@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SpotifyCrub | Home</title>
+  <title>SpotifyCrub | Músicas</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/common.css" />
-  <link rel="stylesheet" href="css/form_musica_criar.css" />
+  <link rel="stylesheet" href="css/page_pesquisa.css" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,17 +38,12 @@
       </div>
     </div>
   </nav>
-<<<<<<< HEAD
 
-  <nav>
-
-=======
-  <nav> 
->>>>>>> 0571fa4e6d361477703d7e3087e861572f4fd922
-  </nav>
   <main class="container py-5">
-    <h1 class="mb-3">Foram encontrados <cor>COUNT(track_name)</cor> resultados.</h1>
-    <p class="lead">A melhor plataforma de música em Portugal.</p>
+    <h1 class="mb-3">Foram encontrados <cor id="contador"></cor> resultados.</h1>
+    <p class="lead" id="show-music-name">Hello World!</p>
+
+    <div class="list-group" id="lista-resultados"></div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
  <script>
