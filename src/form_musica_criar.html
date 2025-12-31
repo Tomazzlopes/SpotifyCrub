@@ -12,14 +12,14 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="index.html">SpotifyCrub</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto">
           <div class="input-group flex-nowrap">
             <span class="input-group-text" id="addon-wrapping"><img src="img/wave-sound.png"></span>
-            <input type="text" class="form-control" placeholder="Pesquise a sua música..." aria-label="Pesquisar música" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control" id="search_field" placeholder="Pesquise a sua música..." aria-label="Pesquisar música" aria-describedby="addon-wrapping"> 
           </div>
           <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>  
           <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
@@ -38,18 +38,52 @@
       </div>
     </div>
   </nav>
-
-  <nav>
-    
+  <nav> 
   </nav>
-
   <main class="container py-5">
     <h1 class="mb-3">Foram encontrados <cor>COUNT(track_name)</cor> resultados.</h1>
     <p class="lead">A melhor plataforma de música em Portugal.</p>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Jacascript
-  </script>
+ <script>
+    const campopesquisa = document.getElementById('search_field');
+    const contador = document.getElementById('contador');
+    const lista = document.getElementById('lista-resultados');
+
+    campopesquisa.addEventListener('input', function(){
+        const nome = campopesquisa.value;
+        if (nome.length > 2) { 
+            window.api.enviarAoBackend('pesquisar', { termo: nome });
+        } else {
+            lista.innerHTML = ''; // Limpa se apagar o texto
+            contador.innerText = '0';
+        }
+    });
+
+    // Corrigido o nome da função para 'receberDoBackend' (como está no teu preload)
+    window.api.receberDoBackend('resultados-pesquisa', (resultados) => {
+        console.log(resultados);
+
+        // Atualiza o número no H1
+        contador.innerText = resultados.length;
+
+        // Limpa a lista antes de adicionar novos
+        lista.innerHTML = '';
+
+        // Adiciona cada música ao HTML
+        resultados.forEach(musica => {
+            lista.innerHTML += `
+
+                <div class="list-group-item bg-dark text-white border-secondary d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>${musica.nome_musica}</strong>
+                        <br><small class="text-secondary">ID: ${musica.id || 'N/A'}</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-success">Ouvir</button>
+                </div>
+            `;
+        });
+    });
+</script>
 </body>
 </html>
