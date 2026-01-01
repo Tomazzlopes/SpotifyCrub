@@ -1,0 +1,17 @@
+.mb-4 {
+    text-align: center !important;
+}
+
+form {
+    margin: 0 auto !important;
+    width: 55% !important;
+    padding: 20px;
+
+    background-color: #121212;
+    border-radius: 20px;
+
+}
+
+form .dropdown {
+    margin-bottom: 20px !important;
+}

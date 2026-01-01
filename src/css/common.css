@@ -19,7 +19,7 @@ body {
     color: rgb(199, 197, 197) !important;
 }
 
-.dropdown-menu {
+nav div .dropdown-menu {
     background-color: rgb(116, 113, 113) !important;
     min-width: 3vw !important; 
 }
@@ -37,17 +37,17 @@ body {
     }
 }
 
-.dropdown-header {
+nav div .dropdown-header {
     color: #fff !important;
     text-align: center !important;
 }
 
-.dropdown-item {
+nav div .dropdown-item {
     color: #cfcfcf !important;
     text-align: center !important;
 }
 
-.dropdown-item:hover {
+nav div .dropdown-item:hover {
     background-color: #5f5d5d !important;
     transition: 0.25s ease !important;
     text-decoration: underline !important;
